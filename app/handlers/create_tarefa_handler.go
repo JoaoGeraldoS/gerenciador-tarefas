@@ -18,7 +18,12 @@ func CreateTarefaHandle(db *sql.DB) gin.HandlerFunc {
 			return
 		}
 
-		tarefas, err := controllers.CreateTarefa(db, &tarefa)
+		var categorias []string
+		for _, categoria := range tarefa.Categorias {
+			categorias = append(categorias, categoria.Nome)
+		}
+
+		tarefas, err := controllers.CreateTarefa(db, &tarefa, categorias)
 		if err != nil {
 			ctx.JSON(http.StatusInternalServerError, gin.H{"erro": err.Error()})
 			return

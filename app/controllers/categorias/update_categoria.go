@@ -8,9 +8,9 @@ import (
 )
 
 func UpdateCategoria(id string, db *sql.DB, categoria *models.Categoria) (*models.Categoria, error) {
-	update := `UPDATE categorias SET nome = ?, descricao = ? WHERE id = ?`
+	update := `UPDATE categorias SET nome = ? WHERE id = ?`
 
-	response, err := db.Exec(update, categoria.Nome, categoria.Descricao, id)
+	response, err := db.Exec(update, categoria.Nome, id)
 	if err != nil {
 		return nil, fmt.Errorf("Erro ao autualizar categoria! %v", err.Error())
 	}

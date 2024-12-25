@@ -19,7 +19,7 @@ func ReadCategoria(db *sql.DB) ([]models.Categoria, error) {
 	for query.Next() {
 		var categoria models.Categoria
 
-		err = query.Scan(&categoria.ID, &categoria.Nome, &categoria.Descricao)
+		err = query.Scan(&categoria.ID, &categoria.Nome)
 		if err != nil {
 			return nil, fmt.Errorf("Erro no mapeamento de dados. %v", err)
 		}

@@ -8,8 +8,8 @@ import (
 )
 
 func CreateCategoria(db *sql.DB, categoria *models.Categoria) (*models.Categoria, error) {
-	inserte := `INSERT INTO categorias (nome, descricao) VALUES (?, ?)`
-	response, err := db.Exec(inserte, categoria.Nome, categoria.Descricao)
+	inserte := `INSERT INTO categorias (nome) VALUES (?)`
+	response, err := db.Exec(inserte, categoria.Nome)
 	if err != nil {
 		return nil, fmt.Errorf("Erro ao salvar os dados")
 	}
