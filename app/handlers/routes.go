@@ -23,5 +23,8 @@ func Rotas(db *sql.DB) *gin.Engine {
 	r.PUT("/categorias", cat.UpdateCategoriaHandler(db))
 	r.DELETE("/categorias", cat.DeleteCategoriaHandler(db))
 
+	// Rotas de Filtro
+	r.GET("/tarefas/filtro", FiltroTarefaHandler(db))
+
 	return r
 }
